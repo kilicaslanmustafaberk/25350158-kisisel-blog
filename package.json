@@ -1,26 +1,55 @@
 {
-  "name": "blogproje",
-  "version": "0.1.0",
+  "name": "careerfolio",
+  "version": "1.9.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "tsx --test tests/**/*.test.ts",
+    "test:security": "tsx --test tests/phase5-security.test.ts",
+    "test:security:http": "node tests/phase5-http.mjs",
+    "test:cv:http": "node tests/cv-upload-regression.mjs",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "auth:generate": "auth generate --config ./src/server/auth.cli.ts --output ./src/db/schema/auth.ts --yes",
+    "auth:bootstrap": "auth create-admin --config ./src/server/auth.cli.ts"
   },
   "dependencies": {
-    "next": "16.3.6",
+    "@aws-sdk/client-s3": "^3.1138.0",
+    "@aws-sdk/s3-request-presigner": "^3.1138.0",
+    "@better-auth/drizzle-adapter": "^1.7.5",
+    "@libsql/client": "^0.18.0",
+    "@react-pdf/renderer": "^4.9.0",
+    "@tiptap/extension-link": "^3.31.3",
+    "@tiptap/pm": "^3.31.3",
+    "@tiptap/react": "^3.31.3",
+    "@tiptap/starter-kit": "^3.31.3",
+    "animejs": "^4.5.0",
+    "better-auth": "^1.7.5",
+    "drizzle-orm": "^1.0.0-rc.4",
+    "next": "16.3.8",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "server-only": "^0.0.1",
+    "three": "^0.186.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.186.0",
+    "auth": "^1.7.5",
+    "drizzle-kit": "^1.0.0-rc.4",
     "eslint": "^9",
     "eslint-config-next": "16.3.6",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }
